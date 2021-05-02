@@ -10,6 +10,7 @@ function App() {
     status: "",
   });
   const [list, setList] = useState([]);
+  const [showThead, setShowThead] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -20,7 +21,13 @@ function App() {
       personTitle: info.title,
       personStatus: info.status,
     };
-    setList([...list, newItem]);
+    if(info){
+      setList([...list, newItem])
+      setShowThead(true)
+    }else{
+      setShowThead(false)
+    }
+      
     setInfo({ picture: "", name: "", title: "", status: "" });
   };
 
@@ -103,7 +110,7 @@ function App() {
         </form>
       </div>
       <div className="grocery-container">
-        <List items={list} />
+        <List items={list} showThead={showThead}/>
       </div>
     </section>
   );
