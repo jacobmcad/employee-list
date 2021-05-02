@@ -15,9 +15,11 @@ function App() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     if (!info.name) {
       alert("please fill all fields");
-    } else if (info.name && isEditing) {
+    } 
+    else if (info.name && isEditing) {
       setList(
         list.map((item) => {
           if (item.id === editID) {
@@ -35,7 +37,8 @@ function App() {
       setInfo({ picture: "", name: "", title: "", status: "" });
       setEditID(null);
       setIsEditing(false);
-    } else {
+    } 
+    else {
       const newItem = {
         id: new Date().getTime().toString(),
         personPicture: info.picture,
@@ -68,7 +71,7 @@ function App() {
     });
   };
 
-  /////////////////////// useEffects ///////////////////////
+  /////////////////////// Local Storage ///////////////////////
   useEffect(() => {
     const savedItems = JSON.parse(localStorage.getItem("list"));
     if (savedItems) {
